@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Java 8 Optional 类 | Gridea</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596291166457">
+<link rel="shortcut icon" href="/favicon.ico?v=1596292676498">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -188,9 +188,13 @@
   <div class="toc-wrapper auto-number auto"
     id="toc_wrapper">
     <ul class="markdownIt-TOC">
-<li>
+<li><a href="#%E5%89%8D%E8%A8%80">前言👇</a><br>
+*
 <ul>
-<li></li>
+<li><a href="#of"><strong>of</strong></a></li>
+<li><a href="#ofnullable"><strong>ofNullable</strong></a></li>
+<li><a href="#ispresent"><strong>isPresent</strong></a></li>
+<li><a href="#get"><strong>get</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -510,10 +514,8 @@
 Optional类是一个可以为null的容器对象，其中isPresent()方法返回true则证明值存在，调用get()返回该对象。</p>
 <!-- more -->
 <p><a href="https://github.com/TYtangyi">Github</a></p>
-<h2 id=""></h2>
-<!-- more -->
-<p>##前言👇<br>
-平常开发中在对属性值为null时，通常使用下面这些方式</p>
+<h1 id="前言">前言👇</h1>
+<p>平常开发中在对属性值为null时，通常使用下面这些方式</p>
 <pre><code class="language-java">if (Objects.nonNull()){
     //业务逻辑..
 }
@@ -522,22 +524,24 @@ if (StringUtils.isNotEmpty()){
 }
 等等.....
 </code></pre>
-<p>如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，该类的多个方法简化了对null或者非null的处理<br>
-<strong>of</strong><br>
-为非null值创建一个Optional</p>
+<p>如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，该类的多个方法简化了对null或者非null的处理</p>
+<h2 id=""></h2>
+<!-- more -->
+<h2 id="of"><strong>of</strong></h2>
+<p>为非null值创建一个Optional</p>
 <pre><code class="language-java">User user = new User();
 Optional&lt;String&gt; userName = Optional.of(&quot;aaa&quot;);
  //传入参数为null，抛出NullPointerException.
 Optional&lt;String&gt; nullValue = Optional.of(null);
 </code></pre>
-<p><strong>ofNullable</strong><br>
-为指定值创建一个Optional，如果指定值为null，则返回一个空的Optional</p>
+<h2 id="ofnullable"><strong>ofNullable</strong></h2>
+<p>为指定值创建一个Optional，如果指定值为null，则返回一个空的Optional</p>
 <pre><code class="language-java">//创建一个不包含任何值的Optional实例
 //输出Optional.empty
 Optional b = Optional.ofNullable(null);
 </code></pre>
-<p><strong>isPresent</strong><br>
-检查之是否存在，存在返回true，否则返回false</p>
+<h2 id="ispresent"><strong>isPresent</strong></h2>
+<p>检查之是否存在，存在返回true，否则返回false</p>
 <pre><code class="language-java">Optional&lt;String&gt; userName = Optional.of(&quot;aaa&quot;);
 if (userName.isPresent()){
     //输出aaa
@@ -549,8 +553,8 @@ if (em.isPresent()){
         System.out.println(em.get());
 }
 </code></pre>
-<p><strong>get</strong><br>
-Optional有值则将其返回，否则抛出NoSuchElementException。</p>
+<h2 id="get"><strong>get</strong></h2>
+<p>Optional有值则将其返回，否则抛出NoSuchElementException。</p>
 <pre><code class="language-java">Optional em = Optional.ofNullable(null);
 em.get();
 ![](https://tytangyi.github.io//post-images/1596277400482.png)
@@ -1100,10 +1104,8 @@ try {
 Optional类是一个可以为null的容器对象，其中isPresent()方法返回true则证明值存在，调用get()返回该对象。&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/TYtangyi&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;&#34;&gt;&lt;/h2&gt;
-&lt;!-- more --&gt;
-&lt;p&gt;##前言👇&lt;br&gt;
-平常开发中在对属性值为null时，通常使用下面这些方式&lt;/p&gt;
+&lt;h1 id=&#34;前言&#34;&gt;前言👇&lt;/h1&gt;
+&lt;p&gt;平常开发中在对属性值为null时，通常使用下面这些方式&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;if (Objects.nonNull()){
     //业务逻辑..
 }
@@ -1112,22 +1114,24 @@ if (StringUtils.isNotEmpty()){
 }
 等等.....
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，该类的多个方法简化了对null或者非null的处理&lt;br&gt;
-&lt;strong&gt;of&lt;/strong&gt;&lt;br&gt;
-为非null值创建一个Optional&lt;/p&gt;
+&lt;p&gt;如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，该类的多个方法简化了对null或者非null的处理&lt;/p&gt;
+&lt;h2 id=&#34;&#34;&gt;&lt;/h2&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;of&#34;&gt;&lt;strong&gt;of&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;为非null值创建一个Optional&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;User user = new User();
 Optional&amp;lt;String&amp;gt; userName = Optional.of(&amp;quot;aaa&amp;quot;);
  //传入参数为null，抛出NullPointerException.
 Optional&amp;lt;String&amp;gt; nullValue = Optional.of(null);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;ofNullable&lt;/strong&gt;&lt;br&gt;
-为指定值创建一个Optional，如果指定值为null，则返回一个空的Optional&lt;/p&gt;
+&lt;h2 id=&#34;ofnullable&#34;&gt;&lt;strong&gt;ofNullable&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;为指定值创建一个Optional，如果指定值为null，则返回一个空的Optional&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//创建一个不包含任何值的Optional实例
 //输出Optional.empty
 Optional b = Optional.ofNullable(null);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;isPresent&lt;/strong&gt;&lt;br&gt;
-检查之是否存在，存在返回true，否则返回false&lt;/p&gt;
+&lt;h2 id=&#34;ispresent&#34;&gt;&lt;strong&gt;isPresent&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;检查之是否存在，存在返回true，否则返回false&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional&amp;lt;String&amp;gt; userName = Optional.of(&amp;quot;aaa&amp;quot;);
 if (userName.isPresent()){
     //输出aaa
@@ -1139,8 +1143,8 @@ if (em.isPresent()){
         System.out.println(em.get());
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;get&lt;/strong&gt;&lt;br&gt;
-Optional有值则将其返回，否则抛出NoSuchElementException。&lt;/p&gt;
+&lt;h2 id=&#34;get&#34;&gt;&lt;strong&gt;get&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Optional有值则将其返回，否则抛出NoSuchElementException。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional em = Optional.ofNullable(null);
 em.get();
 ![](https://tytangyi.github.io//post-images/1596277400482.png)
