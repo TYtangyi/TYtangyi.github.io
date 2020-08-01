@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Gridea</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596265279064">
+<link rel="shortcut icon" href="/favicon.ico?v=1596278216229">
 <link rel="stylesheet" href="/media/css/mist.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -188,19 +188,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">0</span>
+        <span class="site-item-stat-count">1</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">0</span>
+        <span class="site-item-stat-count">1</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">0</span>
+        <span class="site-item-stat-count">1</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -228,13 +228,87 @@
   </script>
         <div class="section-box mist">
           <section class="section bg-color posts-expand slide-down-in">
-              
+            
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://tytangyi.github.io/post/初识Java 8 Optional/">
+      Java 8 Optional 类
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-08-15 00:00:00">2020-08-15</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://tytangyi.github.io/tag/_rmsNxC6B/">
+        <span>Java</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>2<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>410<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+      <div class="post-body">
+        
+        
+          
+            <p>👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如<br>
+然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。<br>
+Optional类是一个可以为null的容器对象，其中isPresent()方法返回true则证明值存在，调用get()返回该对象。</p>
+
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://tytangyi.github.io/post/初识Java 8 Optional/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+        <footer class="post-footer">
+          <div class="post-eof"></div>
+        </footer>
+      
+    </div>
+  </article>
+  
             
             
 <div class="page bg-color">
   <ul class="pagination-ul">
     
     
+      
+        <li class="pagination-li pagination-active">
+            <a href="/page/../">
+              1
+            </a>
+        </li>
       
     
     
@@ -518,6 +592,68 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/post/初识Java 8 Optional/"" data-c="
+          &lt;p&gt;👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如&lt;br&gt;
+然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。&lt;br&gt;
+Optional类是一个可以为null的容器对象，其中isPresent()方法返回true则证明值存在，调用get()返回该对象。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/TYtangyi&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;&#34;&gt;&lt;/h2&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;前言👇&lt;br&gt;
+平常开发中在对属性值为null时，通常使用下面这些方式&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;if (Objects.nonNull()){
+    //业务逻辑..
+}
+if (StringUtils.isNotEmpty()){
+    //业务逻辑
+}
+等等.....
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，该类的多个方法简化了对null或者非null的处理&lt;br&gt;
+&lt;strong&gt;of&lt;/strong&gt;&lt;br&gt;
+为非null值创建一个Optional&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;User user = new User();
+Optional&amp;lt;String&amp;gt; userName = Optional.of(&amp;quot;aaa&amp;quot;);
+ //传入参数为null，抛出NullPointerException.
+Optional&amp;lt;String&amp;gt; nullValue = Optional.of(null);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;ofNullable&lt;/strong&gt;&lt;br&gt;
+为指定值创建一个Optional，如果指定值为null，则返回一个空的Optional&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//创建一个不包含任何值的Optional实例
+//输出Optional.empty
+Optional b = Optional.ofNullable(null);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;isPresent&lt;/strong&gt;&lt;br&gt;
+检查之是否存在，存在返回true，否则返回false&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional&amp;lt;String&amp;gt; userName = Optional.of(&amp;quot;aaa&amp;quot;);
+if (userName.isPresent()){
+    //输出aaa
+    System.out.println(userName.get());
+}
+Optional em = Optional.ofNullable(null);
+//em.isPresent()为false
+if (em.isPresent()){
+        System.out.println(em.get());
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;get&lt;/strong&gt;&lt;br&gt;
+Optional有值则将其返回，否则抛出NoSuchElementException。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional em = Optional.ofNullable(null);
+em.get();
+![](https://tytangyi.github.io//post-images/1596277400482.png)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional em = Optional.ofNullable(null);
+try {
+    System.out.println(em.get());
+}catch (NoSuchElementException e){
+    System.out.println(e.getMessage());//输出No value present
+}
+&lt;/code&gt;&lt;/pre&gt;
+">Java 8 Optional 类</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/post/about/"" data-c="
