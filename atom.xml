@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tytangyi.github.io/</id>
     <title>淡陌</title>
-    <updated>2020-08-02T14:03:08.457Z</updated>
+    <updated>2020-08-02T14:09:47.828Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tytangyi.github.io/"/>
     <link rel="self" href="https://tytangyi.github.io/atom.xml"/>
@@ -23,7 +23,7 @@
 if (StringUtils.isNotEmpty()){
     //业务逻辑
 }
-等等.....
+等等....
 </code></pre>
 <p>然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。</p>
 ]]></summary>
@@ -34,7 +34,7 @@ if (StringUtils.isNotEmpty()){
 if (StringUtils.isNotEmpty()){
     //业务逻辑
 }
-等等.....
+等等....
 </code></pre>
 <p>然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。</p>
 <!-- more -->
