@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Gridea</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596360401649">
+<link rel="shortcut icon" href="/favicon.ico?v=1596360573535">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -607,20 +607,20 @@ System.out.println(em.orElseGet(()-&amp;gt;&amp;quot;default value&amp;quot;));/
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;orelsethrow&#34;&gt;&lt;strong&gt;orElseThrow&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;为null时，抛出&lt;a href=&#34;https://sanaulla.info/2013/04/02/supplier-interface-in-java-util-function-package-in-java-8/&#34;&gt;Supplier&lt;/a&gt;接口的异常。查看源码：&lt;br&gt;
-&lt;img src=&#34;C:/Users/78266/Desktop/images/1596352988(1).jpg&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;file://C:/Users/78266/Desktop/images/1596352988(1).jpg&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;map&#34;&gt;&lt;strong&gt;map&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;参数为&lt;a href=&#34;https://sanaulla.info/2013/03/27/function-interface-a-functional-interface-in-the-java-util-function-package-in-java-8/&#34;&gt;Function&lt;/a&gt;接口类型，查看源码如下：&lt;br&gt;
-&lt;img src=&#34;C:/Users/78266/Desktop/images/1596354459(1).png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;file://C:/Users/78266/Desktop/images/1596354459(1).png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
 如果为null，则返回空Optional，否则调用Function的apply()。&lt;/p&gt;
 &lt;h3 id=&#34;flatmap&#34;&gt;&lt;strong&gt;flatMap&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;功能与map相似，区别在于Function类型参数的结果类型必须为Optional类的实例，返回值类型也必须为Optional类的实例。源码如下：&lt;br&gt;
-&lt;img src=&#34;C:/Users/78266/Desktop/images/1596357487(1).png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;file://C:/Users/78266/Desktop/images/1596357487(1).png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;userName = userName.flatMap(value-&amp;gt;Optional.of(value.toUpperCase()));
 System.out.println(userName.orElse(&amp;quot;no value&amp;quot;));//输出：AAA
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;filter&#34;&gt;&lt;strong&gt;filter&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;调用filter传入&lt;a href=&#34;https://sanaulla.info/2013/04/01/predicate-and-consumer-interface-in-java-util-function-package-in-java-8/&#34;&gt;Predicate&lt;/a&gt;接口类型的参数，通过传入限定条件对Optional实例的值进行过滤&lt;br&gt;
-&lt;img src=&#34;C:/Users/78266/Desktop/images/1596359755(1).png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;file://C:/Users/78266/Desktop/images/1596359755(1).png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional&amp;lt;String&amp;gt; len = userName.filter(value -&amp;gt; value.length() &amp;gt; 2);
 System.out.println(len.orElse(&amp;quot;长度不大于2&amp;quot;));//输出：aaa
 
