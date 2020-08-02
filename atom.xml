@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tytangyi.github.io/</id>
     <title>淡陌</title>
-    <updated>2020-08-02T11:50:51.165Z</updated>
+    <updated>2020-08-02T12:32:06.954Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tytangyi.github.io/"/>
     <link rel="self" href="https://tytangyi.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, 淡陌</rights>
     <entry>
         <title type="html"><![CDATA[Java 8 Optional 类]]></title>
-        <id>https://tytangyi.github.io/post/初识Java 8 Optional/</id>
-        <link href="https://tytangyi.github.io/post/初识Java 8 Optional/">
+        <id>https://tytangyi.github.io/初识Java 8 Optional/</id>
+        <link href="https://tytangyi.github.io/初识Java 8 Optional/">
         </link>
         <updated>2020-08-01T10:41:10.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如<br>

@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>淡陌</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596369045920">
+<link rel="shortcut icon" href="/favicon.ico?v=1596371513266">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -28,11 +28,25 @@
   integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
 
 
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
-  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
-  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-  onload="renderMathInElement(document.body);"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ["\\(", "\\)"]],
+      displayMath: [['$$', '$$'], ["\\[", "\\]"]]
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a', 'annotation', 'annotation-xml'],
+      ignoreHtmlClass: 'tex2jax_ignore|crayon-.*', // 'crayon-' 开头的类，属于Wordpress代码高亮库，这部分不需要处理，否则会导致显示不正确,这部分是正则式，多条之间用'|'分割
+      processHtmlClass: 'tex2jax_process'
+    },
+    //禁用右键菜单	
+    renderActions: {
+      addMenu: [0, '', '']
+    }
+  };
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
@@ -256,7 +270,7 @@
       
         
       
-      <a class="cloud-tag" href="https://tytangyi.github.io/tag/_rmsNxC6B/" rel="1">Java</a>
+      <a class="cloud-tag" href="https://tytangyi.github.io/_rmsNxC6B/" rel="1">Java</a>
     
   </div>
 </div>
@@ -560,7 +574,7 @@
     <div class="result" id="result">
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/post/初识Java 8 Optional/"" data-c="
+        <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/初识Java 8 Optional/"" data-c="
           &lt;p&gt;👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如&lt;br&gt;
 然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。&lt;br&gt;
 Optional类是一个可以为null的容器对象，其中isPresent()方法返回true则证明值存在，调用get()返回该对象。&lt;/p&gt;
@@ -664,7 +678,7 @@ System.out.println(le.orElse(&amp;quot;长度不大于2&amp;quot;));//输出：�
       </div>
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/post/about/"" data-c="
+        <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/about/"" data-c="
           &lt;blockquote&gt;
 &lt;p&gt;欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
 &lt;/blockquote&gt;
