@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tytangyi.github.io/</id>
     <title>淡陌</title>
-    <updated>2020-08-02T13:35:17.066Z</updated>
+    <updated>2020-08-02T13:39:04.805Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tytangyi.github.io/"/>
     <link rel="self" href="https://tytangyi.github.io/atom.xml"/>
@@ -16,13 +16,27 @@
         <link href="https://tytangyi.github.io/初识Java 8 Optional/">
         </link>
         <updated>2020-08-01T10:41:10.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如<br>
-然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。<br>
-Optional类是一个可以为null的容器对象，其中isPresent()方法返回true则证明值存在，调用get()返回该对象。</p>
+        <summary type="html"><![CDATA[<p>👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如</p>
+<pre><code class="language-java">if (Objects.nonNull()){
+    //业务逻辑..
+}
+if (StringUtils.isNotEmpty()){
+    //业务逻辑
+}
+等等.....
+</code></pre>
+<p>然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如<br>
-然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。<br>
-Optional类是一个可以为null的容器对象，其中isPresent()方法返回true则证明值存在，调用get()返回该对象。</p>
+        <content type="html"><![CDATA[<p>👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如</p>
+<pre><code class="language-java">if (Objects.nonNull()){
+    //业务逻辑..
+}
+if (StringUtils.isNotEmpty()){
+    //业务逻辑
+}
+等等.....
+</code></pre>
+<p>然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。</p>
 <!-- more -->
 <p><a href="https://github.com/TYtangyi">Github</a></p>
 <h2 id="前言"><strong>前言</strong>👇</h2>
@@ -35,7 +49,7 @@ if (StringUtils.isNotEmpty()){
 }
 等等.....
 </code></pre>
-<p>如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，该类的多个方法简化了对null或者非null的处理</p>
+<p>如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，Optional类是一个可以为null的容器对象，该类的多个方法简化了对null或者非null的处理</p>
 <h2 id="主要方法"><strong>主要方法</strong></h2>
 <h3 id="of"><strong>of</strong></h3>
 <p>为非null值创建一个Optional</p>

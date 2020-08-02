@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>关于 | 淡陌</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596375314032">
+<link rel="shortcut icon" href="/favicon.ico?v=1596375539174">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1122,9 +1122,16 @@
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/初识Java 8 Optional/"" data-c="
-          &lt;p&gt;👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如&lt;br&gt;
-然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。&lt;br&gt;
-Optional类是一个可以为null的容器对象，其中isPresent()方法返回true则证明值存在，调用get()返回该对象。&lt;/p&gt;
+          &lt;p&gt;👏  在日常开发中经常会遇到调用一个方法获得的返回值可能为空，需要对null进行判断，例如&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;if (Objects.nonNull()){
+    //业务逻辑..
+}
+if (StringUtils.isNotEmpty()){
+    //业务逻辑
+}
+等等.....
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后会做一些相应处理或者抛出NullPointerException,为了减少null值判断，Java8中引入了Optional类。&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/TYtangyi&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言&lt;/strong&gt;👇&lt;/h2&gt;
@@ -1137,7 +1144,7 @@ if (StringUtils.isNotEmpty()){
 }
 等等.....
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，该类的多个方法简化了对null或者非null的处理&lt;/p&gt;
+&lt;p&gt;如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，Optional类是一个可以为null的容器对象，该类的多个方法简化了对null或者非null的处理&lt;/p&gt;
 &lt;h2 id=&#34;主要方法&#34;&gt;&lt;strong&gt;主要方法&lt;/strong&gt;&lt;/h2&gt;
 &lt;h3 id=&#34;of&#34;&gt;&lt;strong&gt;of&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;为非null值创建一个Optional&lt;/p&gt;
