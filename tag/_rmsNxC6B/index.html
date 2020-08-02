@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Gridea</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596335182350">
+<link rel="shortcut icon" href="/favicon.ico?v=1596360401649">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -517,7 +517,7 @@
 Optional类是一个可以为null的容器对象，其中isPresent()方法返回true则证明值存在，调用get()返回该对象。&lt;/p&gt;
 &lt;!-- more --&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/TYtangyi&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;前言&#34;&gt;前言👇&lt;/h2&gt;
+&lt;h2 id=&#34;前言&#34;&gt;&lt;strong&gt;前言&lt;/strong&gt;👇&lt;/h2&gt;
 &lt;p&gt;平常开发中在对属性值为null时，通常使用下面这些方式&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;if (Objects.nonNull()){
     //业务逻辑..
@@ -528,7 +528,7 @@ if (StringUtils.isNotEmpty()){
 等等.....
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;如果某个方法中需要对多个属性或返回值对null判断，代码会变得较为臃肿。那能不能对这种处理方式简化呢？在Java8中引入了Optional类，该类的多个方法简化了对null或者非null的处理&lt;/p&gt;
-&lt;h2 id=&#34;主要方法&#34;&gt;主要方法&lt;/h2&gt;
+&lt;h2 id=&#34;主要方法&#34;&gt;&lt;strong&gt;主要方法&lt;/strong&gt;&lt;/h2&gt;
 &lt;h3 id=&#34;of&#34;&gt;&lt;strong&gt;of&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;为非null值创建一个Optional&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;User user = new User();
@@ -539,14 +539,14 @@ Optional&amp;lt;String&amp;gt; nullValue = Optional.of(null);
 &lt;h3 id=&#34;ofnullable&#34;&gt;&lt;strong&gt;ofNullable&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;为指定值创建一个Optional，如果指定值为null，则返回一个空的Optional&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//创建一个不包含任何值的Optional实例
-//输出Optional.empty
+//输出：Optional.empty
 Optional b = Optional.ofNullable(null);
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;ispresent&#34;&gt;&lt;strong&gt;isPresent&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;检查之是否存在，存在返回true，否则返回false&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional&amp;lt;String&amp;gt; userName = Optional.of(&amp;quot;aaa&amp;quot;);
 if (userName.isPresent()){
-    //输出aaa
+    //输出：aaa
     System.out.println(userName.get());
 }
 Optional em = Optional.ofNullable(null);
@@ -565,9 +565,52 @@ em.get();
 try {
     System.out.println(em.get());
 }catch (NoSuchElementException e){
-    System.out.println(e.getMessage());//输出No value present
+    System.out.println(e.getMessage());//输出：No value present
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ifpresent&#34;&gt;&lt;strong&gt;ifPresent&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;如果Optional实例有值则为其调用consumer ,否则不做处理。Consumer类包含一个抽象方法。该抽象方法对传入的值进行处理，但没有返回值。如果Optional实例有值，调用ifPresent()可以接受接口段或lambda表达式。例如下面代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//lambda表达式对Optional的值调用consumer处理
+username.ifPresent((value) -&amp;gt; {
+     System.out.println(value.length());
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;orelse&#34;&gt;&lt;strong&gt;orElse&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;orElse(T other)在取这个对象的时候，设置一个默认对象（默认值）；如果当前对象为null的时候，就返回默认对象&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;System.out.println(userName.orElse(&amp;quot;no value&amp;quot;));//输出：aaa
+System.out.println(em.orElse(&amp;quot;no value&amp;quot;));//输出：no value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;orelseget&#34;&gt;&lt;strong&gt;orElseGet&lt;/strong&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;orElseGet(Supplier&amp;lt;? extends T&amp;gt; other)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;跟orElse是一样的，区别只是参数，传入了一个函数式参数&lt;a href=&#34;https://sanaulla.info/2013/04/02/supplier-interface-in-java-util-function-package-in-java-8/&#34;&gt;Supplier&lt;/a&gt;。如果Optional对象实例为空，可以生成默认值。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;System.out.println(userName.orElseGet(()-&amp;gt;&amp;quot;default value&amp;quot;));//输出：aaa
+System.out.println(em.orElseGet(()-&amp;gt;&amp;quot;default value&amp;quot;));//输出：default value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;orelsethrow&#34;&gt;&lt;strong&gt;orElseThrow&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;为null时，抛出&lt;a href=&#34;https://sanaulla.info/2013/04/02/supplier-interface-in-java-util-function-package-in-java-8/&#34;&gt;Supplier&lt;/a&gt;接口的异常。查看源码：&lt;br&gt;
+&lt;img src=&#34;C:/Users/78266/Desktop/images/1596352988(1).jpg&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;map&#34;&gt;&lt;strong&gt;map&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;参数为&lt;a href=&#34;https://sanaulla.info/2013/03/27/function-interface-a-functional-interface-in-the-java-util-function-package-in-java-8/&#34;&gt;Function&lt;/a&gt;接口类型，查看源码如下：&lt;br&gt;
+&lt;img src=&#34;C:/Users/78266/Desktop/images/1596354459(1).png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如果为null，则返回空Optional，否则调用Function的apply()。&lt;/p&gt;
+&lt;h3 id=&#34;flatmap&#34;&gt;&lt;strong&gt;flatMap&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;功能与map相似，区别在于Function类型参数的结果类型必须为Optional类的实例，返回值类型也必须为Optional类的实例。源码如下：&lt;br&gt;
+&lt;img src=&#34;C:/Users/78266/Desktop/images/1596357487(1).png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;userName = userName.flatMap(value-&amp;gt;Optional.of(value.toUpperCase()));
+System.out.println(userName.orElse(&amp;quot;no value&amp;quot;));//输出：AAA
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;filter&#34;&gt;&lt;strong&gt;filter&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;调用filter传入&lt;a href=&#34;https://sanaulla.info/2013/04/01/predicate-and-consumer-interface-in-java-util-function-package-in-java-8/&#34;&gt;Predicate&lt;/a&gt;接口类型的参数，通过传入限定条件对Optional实例的值进行过滤&lt;br&gt;
+&lt;img src=&#34;C:/Users/78266/Desktop/images/1596359755(1).png&#34; alt=&#34;image&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Optional&amp;lt;String&amp;gt; len = userName.filter(value -&amp;gt; value.length() &amp;gt; 2);
+System.out.println(len.orElse(&amp;quot;长度不大于2&amp;quot;));//输出：aaa
+
+Optional&amp;lt;String&amp;gt; u = Optional.of(&amp;quot;a&amp;quot;);
+Optional&amp;lt;String&amp;gt; le = u.filter(v -&amp;gt; v.length() &amp;gt; 2);
+System.out.println(le.orElse(&amp;quot;长度不大于2&amp;quot;));//输出：长度不大于2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上就是Optional类的主要方法&lt;/p&gt;
 ">Java 8 Optional 类</a>
       </div>
       
