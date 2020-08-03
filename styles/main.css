@@ -2180,7 +2180,7 @@ body {
     }.box-shadow-wrapper {
       box-shadow: none !important;
     }body {
-      cursor: url('https://cdn.jsdelivr.net/gh/TYtangyi/TYtangyi.github.io@master/media/curs/G:\grideablog\themes\next\assets\media\curs.cur'), default;
+      cursor: default;
     }a {
       cursor: pointer;
     }input, textarea, code {
