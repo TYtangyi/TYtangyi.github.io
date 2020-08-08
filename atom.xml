@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tytangyi.github.io/</id>
     <title>淡陌</title>
-    <updated>2020-08-03T08:29:58.314Z</updated>
+    <updated>2020-08-08T09:58:26.267Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tytangyi.github.io/"/>
     <link rel="self" href="https://tytangyi.github.io/atom.xml"/>
@@ -10,6 +10,106 @@
     <logo>https://tytangyi.github.io/images/avatar.png</logo>
     <icon>https://tytangyi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 淡陌</rights>
+    <entry>
+        <title type="html"><![CDATA[Java自定义注解的一次使用]]></title>
+        <id>https://tytangyi.github.io/6nS7y2LUK/</id>
+        <link href="https://tytangyi.github.io/6nS7y2LUK/">
+        </link>
+        <updated>2020-08-08T08:48:23.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近公司提出了一个需求，一些涉及到发送验证码的接口如果是在非生产环境和在白名单中的手机号实际不发送验证码。我的想法是在切面当中处理，当调用这些接口时会在切面中判断是否符合这两种条件，符合就直接返回一个标识，否则继续走接口业务逻辑。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近公司提出了一个需求，一些涉及到发送验证码的接口如果是在非生产环境和在白名单中的手机号实际不发送验证码。我的想法是在切面当中处理，当调用这些接口时会在切面中判断是否符合这两种条件，符合就直接返回一个标识，否则继续走接口业务逻辑。</p>
+<!-- more -->
+<h2 id="定义注解"><strong>定义注解</strong></h2>
+<p>统一处理这些接口，首先可以自定义一个注解。</p>
+<pre><code class="language-java">@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface SendCode {
+}
+</code></pre>
+<h2 id="定义扫描切面"><strong>定义扫描切面</strong></h2>
+<p>接着定义一个切面扫描加入这个注解的接口</p>
+<h3 id="获取容器对象运行环境"><strong>获取容器对象，运行环境</strong></h3>
+<p>这部分获取了运行环境(dev、pre、pro..)，定义JackSon和发送标识</p>
+<pre><code class="language-java">@Aspect
+@Component
+@Slf4j
+public class SendCodeAspect {
+
+    @Autowired
+    private UserService userService;
+
+    private ObjectMapper mapper = new ObjectMapper();
+// 获取当前的运行环境
+    @Value(&quot;${system.envrionment}&quot;)
+    private String env;
+
+    //发送标识
+    private String sendCodeFlag = false;
+
+    public SendCodeAspect() {
+        this.mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
+</code></pre>
+<h3 id="扫描切点接口参数校验"><strong>扫描切点，接口参数校验</strong></h3>
+<pre><code class="language-java">  // 定义切点，扫描注解所在路径
+    @Pointcut(&quot;@annotation(...SendCode)&quot;)
+    public void Pointcut() {
+    }
+// 环绕通知
+    @Around(&quot;Pointcut()&quot;)
+    public Object aspectMethod(ProceedingJoinPoint point) throws Throwable {
+        // 获取所传的参数
+        Object[] args = point.getArgs();
+        // 接口的路径
+        String path = point.getSignature().getDeclaringTypeName() + &quot;.&quot; + point.getSignature().getName();
+        log.info(&quot;发送验证码切面执行路径：&quot; + path);
+        Class&lt;?&gt;[] selfParameterTypes = ((MethodSignature) point.getSignature()).getMethod().getParameterTypes();
+        Method method = point.getSignature().getDeclaringType().getMethod(point.getSignature().getName(), selfParameterTypes);
+        log.info(&quot;发送验证码切面执行方法：&quot; + method);
+        log.info(&quot;当前环境:&quot;+env);
+
+        // 不校验pro
+        if (!&quot;pro&quot;.equals(env)) {
+            // 查询手机号白名单
+            List&lt;String&gt; stringList = userService.selectUserMobileWhite();
+            // 手机号主要有这些字段
+            List&lt;String&gt; list = Arrays.asList(&quot;mobile&quot;, &quot;userName&quot;,&quot;email&quot;);
+            //Map&lt;String, Object&gt; params = getNameAndValue(point);
+            // 判断传所传的参数中是否在手机号白名单中
+            for (String li : list) {
+                // 使用Jackson序列化参数
+                String json = mapper.writeValueAsString(args[0]);
+                JsonNode jsonNode = mapper.readTree(json);
+                if (Objects.nonNull(jsonNode.get(li))) {
+                    if (stringList.contains(jsonNode.get(li).asText(&quot;Default&quot;))) {
+                        log.info(&quot;--------------手机号白名单通过-------------&quot;);
+                        sendCodeFlag = true;
+                        return sendCodeFlag;
+                    }
+                }
+            }
+        }
+        // 不满足条件继续执行接口逻辑
+        return point.proceed(args);
+    }
+}
+</code></pre>
+<p>还可以获取指定参数和传参字段</p>
+<pre><code class="language-java">// 获取指定参数和传参字段
+    private Map&lt;String, Object&gt; getNameAndValue(ProceedingJoinPoint point) {
+        Map&lt;String, Object&gt; param = Maps.newLinkedHashMap();
+
+        Object[] paramValues = point.getArgs();
+        String[] paramNames = ((CodeSignature) point.getSignature()).getParameterNames();
+
+        param.put(paramNames[0], paramValues[0]);
+        return param;
+    }
+</code></pre>
+<p>以上就是切面与注解的搭配使用</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Java 8 Optional 类]]></title>
         <id>https://tytangyi.github.io/初识Java 8 Optional/</id>

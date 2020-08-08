@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>淡陌</title>
-<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/TYtangyi/TYtangyi.github.io@master/favicon.ico?v=1596443391624">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/TYtangyi/TYtangyi.github.io@master/favicon.ico?v=1596880630155">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TYtangyi/TYtangyi.github.io@master/media/css/gemini.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TYtangyi/TYtangyi.github.io@master/media/fonts/font-awesome.css">
 <link
@@ -190,7 +190,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">2</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -245,6 +245,68 @@
         <div class="section-box gemini">
           <section class="section  posts-expand slide-down-in">
             
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://tytangyi.github.io/6nS7y2LUK/">
+      Java自定义注解的一次使用
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-08-08 16:48:23">2020-08-08</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://tytangyi.github.io/_rmsNxC6B/">
+        <span>Java</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>3<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>600<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+      <div class="post-body">
+        
+        
+          
+            <p>最近公司提出了一个需求，一些涉及到发送验证码的接口如果是在非生产环境和在白名单中的手机号实际不发送验证码。我的想法是在切面当中处理，当调用这些接口时会在切面中判断是否符合这两种条件，符合就直接返回一个标识，否则继续走接口业务逻辑。</p>
+
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://tytangyi.github.io/6nS7y2LUK/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+    </div>
+  </article>
+
   <article class="post-list-box  post box-shadow-wrapper">
     <div class="article-wrapper bg-color">
       <section class="post-header">
@@ -580,6 +642,101 @@ if (StringUtils.isNotEmpty()){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/6nS7y2LUK/"" data-c="
+          &lt;p&gt;最近公司提出了一个需求，一些涉及到发送验证码的接口如果是在非生产环境和在白名单中的手机号实际不发送验证码。我的想法是在切面当中处理，当调用这些接口时会在切面中判断是否符合这两种条件，符合就直接返回一个标识，否则继续走接口业务逻辑。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;定义注解&#34;&gt;&lt;strong&gt;定义注解&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;统一处理这些接口，首先可以自定义一个注解。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface SendCode {
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;定义扫描切面&#34;&gt;&lt;strong&gt;定义扫描切面&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;接着定义一个切面扫描加入这个注解的接口&lt;/p&gt;
+&lt;h3 id=&#34;获取容器对象运行环境&#34;&gt;&lt;strong&gt;获取容器对象，运行环境&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;这部分获取了运行环境(dev、pre、pro..)，定义JackSon和发送标识&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Aspect
+@Component
+@Slf4j
+public class SendCodeAspect {
+
+    @Autowired
+    private UserService userService;
+
+    private ObjectMapper mapper = new ObjectMapper();
+// 获取当前的运行环境
+    @Value(&amp;quot;${system.envrionment}&amp;quot;)
+    private String env;
+
+    //发送标识
+    private String sendCodeFlag = false;
+
+    public SendCodeAspect() {
+        this.mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;扫描切点接口参数校验&#34;&gt;&lt;strong&gt;扫描切点，接口参数校验&lt;/strong&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;  // 定义切点，扫描注解所在路径
+    @Pointcut(&amp;quot;@annotation(...SendCode)&amp;quot;)
+    public void Pointcut() {
+    }
+// 环绕通知
+    @Around(&amp;quot;Pointcut()&amp;quot;)
+    public Object aspectMethod(ProceedingJoinPoint point) throws Throwable {
+        // 获取所传的参数
+        Object[] args = point.getArgs();
+        // 接口的路径
+        String path = point.getSignature().getDeclaringTypeName() + &amp;quot;.&amp;quot; + point.getSignature().getName();
+        log.info(&amp;quot;发送验证码切面执行路径：&amp;quot; + path);
+        Class&amp;lt;?&amp;gt;[] selfParameterTypes = ((MethodSignature) point.getSignature()).getMethod().getParameterTypes();
+        Method method = point.getSignature().getDeclaringType().getMethod(point.getSignature().getName(), selfParameterTypes);
+        log.info(&amp;quot;发送验证码切面执行方法：&amp;quot; + method);
+        log.info(&amp;quot;当前环境:&amp;quot;+env);
+
+        // 不校验pro
+        if (!&amp;quot;pro&amp;quot;.equals(env)) {
+            // 查询手机号白名单
+            List&amp;lt;String&amp;gt; stringList = userService.selectUserMobileWhite();
+            // 手机号主要有这些字段
+            List&amp;lt;String&amp;gt; list = Arrays.asList(&amp;quot;mobile&amp;quot;, &amp;quot;userName&amp;quot;,&amp;quot;email&amp;quot;);
+            //Map&amp;lt;String, Object&amp;gt; params = getNameAndValue(point);
+            // 判断传所传的参数中是否在手机号白名单中
+            for (String li : list) {
+                // 使用Jackson序列化参数
+                String json = mapper.writeValueAsString(args[0]);
+                JsonNode jsonNode = mapper.readTree(json);
+                if (Objects.nonNull(jsonNode.get(li))) {
+                    if (stringList.contains(jsonNode.get(li).asText(&amp;quot;Default&amp;quot;))) {
+                        log.info(&amp;quot;--------------手机号白名单通过-------------&amp;quot;);
+                        sendCodeFlag = true;
+                        return sendCodeFlag;
+                    }
+                }
+            }
+        }
+        // 不满足条件继续执行接口逻辑
+        return point.proceed(args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;还可以获取指定参数和传参字段&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// 获取指定参数和传参字段
+    private Map&amp;lt;String, Object&amp;gt; getNameAndValue(ProceedingJoinPoint point) {
+        Map&amp;lt;String, Object&amp;gt; param = Maps.newLinkedHashMap();
+
+        Object[] paramValues = point.getArgs();
+        String[] paramNames = ((CodeSignature) point.getSignature()).getParameterNames();
+
+        param.put(paramNames[0], paramValues[0]);
+        return param;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上就是切面与注解的搭配使用&lt;/p&gt;
+">Java自定义注解的一次使用</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/about/"" data-c="
