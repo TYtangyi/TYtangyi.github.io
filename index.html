@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>淡陌</title>
-<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/TYtangyi/TYtangyi.github.io@master/favicon.ico?v=1597638705939">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/TYtangyi/TYtangyi.github.io@master/favicon.ico?v=1598180013806">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TYtangyi/TYtangyi.github.io@master/media/css/gemini.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TYtangyi/TYtangyi.github.io@master/media/fonts/font-awesome.css">
 <link
@@ -190,7 +190,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -245,6 +245,68 @@
         <div class="section-box gemini">
           <section class="section  posts-expand slide-down-in">
             
+  <article class="post-list-box  post box-shadow-wrapper">
+    <div class="article-wrapper bg-color">
+      <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://tytangyi.github.io/kRSF9SGOX/">
+      初学SpringCloud GateWay
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2020-08-23 16:02:59">2020-08-23</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show language" data-lan="category-in">分类于</span>
+      
+      
+      <a href="https://tytangyi.github.io/_rmsNxC6B/">
+        <span>Java</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>8<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1974<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</section>
+      <div class="post-body">
+        
+        
+          
+            <p>Spring Cloud Gateway 是 Spring 官方基于 Spring 5.0，Spring Boot 2.0 和 Project  Reactor 等技术开发的网关，旨在为微服务架构提供一种简单而有效的统一的 API 路由管理方式，统一访问接口。SpringCloud Gateway 作为 Spring Cloud 生态系中的网关，目标是替代 Netflix ZUUL，其不仅提供统一的路由方式，并且基于 Filter 链的方式提供了网关基本的功能，例如：安全，监控/埋点，和限流等。它是基于Nttey的响应式开发模式。</p>
+
+          
+        
+        
+        <div class="post-button text-center">
+          <a class="btn language" data-lan="read-more" href="https://tytangyi.github.io/kRSF9SGOX/" rel="contents">
+            阅读全文 »
+          </a>
+        </div>
+        
+      </div>
+      
+    </div>
+  </article>
+
   <article class="post-list-box  post box-shadow-wrapper">
     <div class="article-wrapper bg-color">
       <section class="post-header">
@@ -642,6 +704,217 @@ if (StringUtils.isNotEmpty()){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/kRSF9SGOX/"" data-c="
+          &lt;p&gt;Spring Cloud Gateway 是 Spring 官方基于 Spring 5.0，Spring Boot 2.0 和 Project  Reactor 等技术开发的网关，旨在为微服务架构提供一种简单而有效的统一的 API 路由管理方式，统一访问接口。SpringCloud Gateway 作为 Spring Cloud 生态系中的网关，目标是替代 Netflix ZUUL，其不仅提供统一的路由方式，并且基于 Filter 链的方式提供了网关基本的功能，例如：安全，监控/埋点，和限流等。它是基于Nttey的响应式开发模式。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;核心概念&#34;&gt;&lt;strong&gt;核心概念&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;路由route&#34;&gt;&lt;strong&gt;路由（route）&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;是网关最基础的部分，路由信息由一个ID、一个目的URL、一组断言工厂和一组Filter组成。如果断言为真，则说明请求URL和配置的路由匹配。&lt;/p&gt;
+&lt;h3 id=&#34;断言predicates&#34;&gt;&lt;strong&gt;断言（predicates）&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Java8中的断言函数，Spring Cloud Gateway中的断言函数输入类型是Spring5.0框架中的ServerWebExchange。Spring Cloud Gateway中的断言函数允许开发者去定义匹配来自Http Request中的任何信息，比如请求头和参数等。&lt;/p&gt;
+&lt;h3 id=&#34;过滤器filter&#34;&gt;&lt;strong&gt;过滤器（filter）&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;一个标准的Spring webFilter，Spring Cloud Gateway中的Filter分为两种类型，分别是Gateway Filter和Global Filter。过滤器Filter可以对请求和响应进行处理。&lt;/p&gt;
+&lt;h2 id=&#34;搭建项目&#34;&gt;&lt;strong&gt;搭建项目&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;创建工程导入依赖&#34;&gt;&lt;strong&gt;创建工程导入依赖&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;在项目中添加新模块api_gateway_server，并导入依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-cloud-starter-gateway&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要注意的是 SpringCloud Gateway使用的web框架为webflux，和SpringMVC不兼容。引入的限流组件是hystrix。redis底层不再使用jedis，而是lettuce。&lt;/p&gt;
+&lt;h3 id=&#34;配置启动类&#34;&gt;&lt;strong&gt;配置启动类&lt;/strong&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@EnableDiscoveryClient
+@SpringBootApplication
+public class GatewayServerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayServerApplication.class,args);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;编写配置文件&#34;&gt;&lt;strong&gt;编写配置文件&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;创建 application.yml 配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway-server
+  cloud:
+    gateway:
+      routes:
+      - id: product-service
+        uri: http://127.0.0.1:9001
+        predicates:
+        - Path=/product/**
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;id ：我们自定义的路由 ID，保持唯一&lt;/li&gt;
+&lt;li&gt;uri ：目标服务地址&lt;/li&gt;
+&lt;li&gt;predicates ：路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默&lt;br&gt;
+认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。&lt;/li&gt;
+&lt;li&gt;filters ：过滤规则，暂时没用&lt;br&gt;
+上面这段配置的意思是，配置了一个 id 为 product-service的路由规则，当访问网关请求地址以&lt;br&gt;
+product 开头时，会自动转发到地址： http://127.0.0.1:9001/ 。配置完成启动项目即可在浏览器&lt;br&gt;
+访问进行测试，当我们访问地址 http://localhost:8080/product/1 时会展示页面展示如下：&lt;br&gt;
+&lt;img src=&#34;https://tytangyi.github.io//post-images/1598172835192.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;路由规则&#34;&gt;&lt;strong&gt;路由规则&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Spring Cloud Gateway 的功能很强大，前面我们只是使用了 predicates 进行了简单的条件匹配，其实Spring Cloud Gataway 帮我们内置了很多 Predicates 功能。在 Spring Cloud Gateway 中 Spring 利用Predicate 的特性实现了各种路由匹配规则，有通过 Header、请求参数等不同的条件来进行作为条件匹配到对应的路由。&lt;br&gt;
+例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;#路由断言之后匹配
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: after_route
+        uri: https://xxxx.com
+        #路由断言之前匹配
+        predicates:
+        - After=xxxxx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;动态路由&#34;&gt;&lt;strong&gt;动态路由&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;和zuul网关类似，在SpringCloud GateWay中也支持动态路由：即自动的从注册中心中获取服务列表并&lt;br&gt;
+访问。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加注册中心依赖（这里以Eureka为例）：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.cloud&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-cloud-starter-netflix-eureka-client&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;配置动态路由&lt;br&gt;
+修改 application.yml 配置文件，添加eureka注册中心的相关配置，并修改访问映射的URL为服务名&lt;br&gt;
+称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway-server
+  cloud:
+    gateway:
+      routes:
+      - id: product-service
+        uri: lb://service-product
+        predicates:
+        - Path=/product/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+  instance:
+    prefer-ip-address: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;uri：uri以 lb: //开头（lb代表从注册中心获取服务），后面接的就是你需要转发到的服务名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;重写转发路径&#34;&gt;&lt;strong&gt;重写转发路径&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;在SpringCloud Gateway中，路由转发是直接将匹配的路由path直接拼接到映射路径（URI）之后，那&lt;br&gt;
+么在微服务开发中往往没有那么便利。这里就可以通过RewritePath机制来进行路径重写。&lt;br&gt;
+&lt;strong&gt;修改 application.yml&lt;/strong&gt;，将匹配路径改为 &lt;strong&gt;/product -service/&lt;/strong&gt;**&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway-server
+  cloud:
+    gateway:
+      routes:
+      - id: product-service #保持唯一
+        uri: lb://service-product
+        predicates:
+        - Path=/product-service/**
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重新启动网关，我们在浏览器访问 http://127.0.0.1:8080/product-service/product/1，会抛出404。这是由于路由转发规则默认转发到商品微服务（ http://127.0.0.1:9001/product-&lt;br&gt;
+service/product/1 ）路径上，而商品微服务又没有 product -service 对应的映射配置。&lt;br&gt;
+添加RewritePath重写转发路径：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway-server
+  cloud:
+    gateway:
+      routes:
+      - id: product-service #保持唯一
+        uri: lb://service-product
+        predicates:
+        - Path=/product-service/**
+        filters:
+        - RewritePath=/product-service/(?&amp;lt;segment&amp;gt;.*),/$\{segment}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过 RewritePath配置重写转发的url，将/product-service/(?.*)，重写为{segment}，然后转发到订单微服务。比如在网页上请求 http://localhost:8080/product-service/product，此时会将请求转发到http://127.0.0.1:9002/product/1（ 值得注意的是在 yml文档中 $ 要写成 $\）&lt;/p&gt;
+&lt;h3 id=&#34;过滤器&#34;&gt;&lt;strong&gt;过滤器&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Spring Cloud Gateway除了具备请求路由功能之外，也支持对请求的过滤。通过Zuul网关类似，也是通&lt;br&gt;
+过过滤器的形式来实现的。那么接下来我们一起来研究一下Gateway中的过滤器&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;过滤器基础&lt;br&gt;
+Spring Cloud Gateway 的 Filter 的生命周期不像 Zuul 的那么丰富，它只有两个：“pre” 和 “post”。&lt;br&gt;
+&lt;strong&gt;PRE&lt;/strong&gt;：这种过滤器在请求被路由之前调用。我们可利用这种过滤器实现身份验证、在集群中选择&lt;br&gt;
+请求的微服务、记录调试信息等。&lt;br&gt;
+&lt;strong&gt;POST&lt;/strong&gt;：这种过滤器在路由到微服务以后执行。这种过滤器可用来为响应添加标准的 HTTP&lt;br&gt;
+Header、收集统计信息和指标、将响应从微服务发送给客户端等。&lt;/li&gt;
+&lt;li&gt;过滤器类型&lt;br&gt;
+Spring Cloud Gateway 的 Filter 从作用范围可分为另外两种GatewayFilter与GlobalFilter。&lt;br&gt;
+&lt;strong&gt;GatewayFilter&lt;/strong&gt;：应用到单个路由或者一个分组的路由上。&lt;br&gt;
+&lt;strong&gt;GlobalFilter&lt;/strong&gt;：应用到所有的路由上。&lt;/li&gt;
+&lt;li&gt;局部过滤器&lt;br&gt;
+局部过滤器（GatewayFilter），是针对单个路由的过滤器。可以对访问的URL过滤，进行切面处理。在&lt;br&gt;
+Spring Cloud Gateway中通过GatewayFilter的形式内置了很多不同类型的局部过滤器。&lt;/li&gt;
+&lt;li&gt;全局过滤器&lt;br&gt;
+全局过滤器（GlobalFilter）作用于所有路由，Spring Cloud Gateway 定义了Global Filter接口，用户可以自定义实现自己的Global Filter。通过全局过滤器可以实现对权限的统一校验，安全性验证等功能，并且全局过滤器也是程序员使用比较多的过滤器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;统一鉴权&#34;&gt;&lt;strong&gt;统一鉴权&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;鉴权逻辑&lt;br&gt;
+1.当客户端第一次请求服务时，服务端对用户进行信息认证（登录）&lt;br&gt;
+2.认证通过，将用户信息进行加密形成 token，返回给客户端，作为登录凭证&lt;br&gt;
+3.以后每次请求，客户端都携带认证的 token&lt;br&gt;
+4.服务端对 token进行解密，判断是否有效。&lt;br&gt;
+下面的我们自定义一个GlobalFilter，去校验所有请求的请求参数中是否包含“token”，如何不包含请求&lt;br&gt;
+参数“token”则不转发路由，否则执行正常的逻辑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Component
+public class LoginFilter implements GlobalFilter, Ordered {
+
+    /**
+     * 执行过滤器中的业务逻辑
+     *      对请求参数中的access-token进行判断
+     *      存在认证成功，否则失败
+     *
+     * @param exchange
+     * @param chain
+     * @return
+     */
+    @Override
+    public Mono&amp;lt;Void&amp;gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        System.out.println(&amp;quot;执行了自定义的全局过滤器&amp;quot;);
+        String token = exchange.getRequest().getQueryParams().getFirst(&amp;quot;access-token&amp;quot;);
+        if (StringUtils.isEmpty(token)){
+            System.out.println(&amp;quot;未登录&amp;quot;);
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+            return exchange.getResponse().setComplete(); //请求结束
+        }
+        return chain.filter(exchange); //继续向下执行
+    }
+
+    /**
+     * 指定过滤器执行顺序，返回值越小，执行优先级越高
+     * @return
+     */
+    @Override
+    public int getOrder() {
+        return 0;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+">初学SpringCloud GateWay</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://tytangyi.github.io/6nS7y2LUK/"" data-c="
